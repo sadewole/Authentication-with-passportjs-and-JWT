@@ -1,0 +1,33 @@
+{
+  "name": "auth_with_jwt",
+  "version": "1.0.0",
+  "description": "User authentication and authorization",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sadewole/Authentication-with-passportjs-and-JWT.git"
+  },
+  "author": "samador",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sadewole/Authentication-with-passportjs-and-JWT/issues"
+  },
+  "homepage": "https://github.com/sadewole/Authentication-with-passportjs-and-JWT#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dot-env": "0.0.1",
+    "express": "^4.16.4",
+    "express-promise-router": "^3.0.3",
+    "joi": "^14.3.1",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.16",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  }
+}
