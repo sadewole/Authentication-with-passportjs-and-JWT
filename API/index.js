@@ -3,8 +3,10 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const userRoute = require('./routes/user');
 require('dotenv').config();
 
+// DB connection
 mongoose.Promise = global.Promise;
 mongoose.connect(
 	'mongodb://localhost:27017/loginAuth',
@@ -25,6 +27,9 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// route
+app.use('/api/user/', userRoute);
 
 // error handler
 app.use((req, res, next) => {

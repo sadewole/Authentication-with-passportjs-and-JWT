@@ -2,7 +2,7 @@
 	"name": "auth_with_jwt",
 	"version": "1.0.0",
 	"description": "User authentication and authorization",
-	"main": "index.js",
+	"main": "API/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -20,7 +20,7 @@
 		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.18.3",
 		"cors": "^2.8.5",
-		"dot-env": "0.0.1",
+		"dotenv": "^6.2.0",
 		"express": "^4.16.4",
 		"express-promise-router": "^3.0.3",
 		"joi": "^14.3.1",
