@@ -4,6 +4,9 @@ const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const errorReg = document.querySelector('#errorReg');
 const confirmPassword = document.querySelector('#password2');
+const logSubmit = document.querySelector('#logSubmit');
+const logEmail = document.querySelector('#logEmail');
+const logPassword = document.querySelector('#logPassword');
 const url = 'http://localhost:3000/api/user/';
 
 const clearError = () => {
