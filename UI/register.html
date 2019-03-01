@@ -14,7 +14,7 @@
             <div class="col-md-6 m-auto">
                 <div class="card card-body">
                     <h1 class="text-center mb-3"><i class="fas fa-user-plus"></i>Register</h1>
-                    <form method="POST">
+                    <form >
                         <div class="form-group">
                             <label>Username</label>
                             <input type="text" name="username" id="username" class="form-control" placeholder="Enter username">
@@ -31,12 +31,14 @@
                             <label>Confirm Password</label>
                             <input type="password" name="password2" id="password2" class="form-control" placeholder="Enter confirmation password">
                         </div>
-                        <button class="btn btn-danger btn-block">Register</button>
+                        <p id="errorReg" class="text-danger mb-3"></p>
+                        <button class="btn btn-danger btn-block" type="submit" id="regSubmit">Register</button>
                     </form>
                     <p class="lead mt-4">Have an account? <a href="./login.html">Login</a></p>
                 </div>
             </div>
         </div>
     </div>
+    <script src="js/main.js"></script>
 </body>
 </html>

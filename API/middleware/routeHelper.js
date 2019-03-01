@@ -15,8 +15,7 @@ module.exports = {
 		signupAuth: joi.object().keys({
 			username: joi.string().required(),
 			email: joi.string().email().required(),
-			password: joi.string().regex(/^[a-zA-Z0-9]{5,30}$/).required(),
-			confirmationPassword: joi.any().valid(joi.ref('password')).required()
+			password: joi.string().required()
 		}),
 		signinAuth: joi.object().keys({
 			email: joi.string().email().required(),
