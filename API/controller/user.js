@@ -1,12 +1,13 @@
 const User = require('../model/user');
 const JWT = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config');
+const bcrypt = require('bcryptjs');
 
 const signToken = (user) => {
 	return JWT.sign(
 		{
 			iss: 'codeSecret',
-			sub: user.id,
+			sub: user._id,
 			iat: new Date().getTime(),
 			exp: new Date().setDate(new Date().getDate() + 1)
 		},
@@ -25,15 +26,21 @@ module.exports = {
 			});
 		} else {
 			const newUser = await new User({ email, password, username });
-			await newUser.save();
+			bcrypt.genSalt(10, (err, salt) =>
+				bcrypt.hash(password, 10, async (err, hash) => {
+					newUser.password = hash;
+					await newUser.save();
 
-			const token = signToken(newUser);
-			res.status(200).json({
-				TYPE: 'POST',
-				status: 200,
-				message: 'Registered successfully',
-				token
-			});
+					const token = signToken(newUser);
+					res.status(200).json({
+						TYPE: 'POST',
+						status: 200,
+						message: 'Registered successfully',
+						data: newUser,
+						token
+					});
+				})
+			);
 		}
 	},
 	signin: async (req, res, next) => {
@@ -71,9 +78,12 @@ module.exports = {
 		if (user) {
 			const token = signToken(user);
 			res.status(200).json({
-				TYPE: 'GET',
+				TYPE: 'POST',
 				status: 200,
-				message: 'Registered successfully',
+				data: {
+					id: user._id
+				},
+				message: 'Verified successfully',
 				token
 			});
 		} else {
@@ -83,6 +93,24 @@ module.exports = {
 		}
 	},
 	verifyPassword: async (req, res, next) => {
-		const user = await User.findOne();
+		const userId = req.params.userId;
+		const { email, password } = req.body;
+
+		const newUser = await User.findByIdAndUpdate(userId, { email, password });
+		bcrypt.genSalt(10, (err, salt) =>
+			bcrypt.hash(password, salt, async (err, hash) => {
+				newUser.password = hash;
+				await newUser.save();
+
+				const token = signToken(newUser);
+				res.status(200).json({
+					TYPE: 'PATCH',
+					status: 200,
+					message: 'Updated successfully',
+					data: newUser,
+					token
+				});
+			})
+		);
 	}
 };
