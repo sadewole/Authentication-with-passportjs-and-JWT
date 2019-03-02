@@ -45,8 +45,19 @@ module.exports = {
 			token
 		});
 	},
+	logout: async (req, res, next) => {
+		res.status(200).json({
+			TYPE: 'GET',
+			status: 200,
+			message: 'Logout successful',
+			token: ''
+		});
+	},
 	secret: async (req, res, next) => {
-		res.json({
+		res.status(200).json({
+			TYPE: 'GET',
+			data: req.user,
+			status: 200,
 			secret: 'resource'
 		});
 	}
