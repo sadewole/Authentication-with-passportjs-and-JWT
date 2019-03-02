@@ -17,7 +17,7 @@ window.addEventListener('load', () => {
 					window.location.replace('./login.html');
 				}
 				const { username } = data.data;
-				welcomeText.innerHTML = `Welcome ${username}`;
+				welcomeText.innerHTML = `Welcome ${username} <br> This ${data.secret} is protected`;
 			});
 	} else {
 		window.location.replace('./login.html');

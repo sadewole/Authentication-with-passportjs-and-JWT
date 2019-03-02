@@ -20,6 +20,9 @@ module.exports = {
 		signinAuth: joi.object().keys({
 			email: joi.string().email().required(),
 			password: joi.string().required()
+		}),
+		emailAuth: joi.object().keys({
+			email: joi.string().email().required()
 		})
 	}
 };

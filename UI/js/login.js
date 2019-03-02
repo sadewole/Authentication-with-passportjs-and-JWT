@@ -29,7 +29,7 @@ signIn = () => {
 			error.innerHTML = data.message;
 		})
 		.catch((err) => {
-			console.error(err);
+			error.innerHTML = 'Invalid email or password';
 		});
 };
 

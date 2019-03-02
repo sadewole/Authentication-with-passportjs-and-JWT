@@ -37,13 +37,16 @@ module.exports = {
 		}
 	},
 	signin: async (req, res, next) => {
-		const token = signToken(req.user);
-		res.status(200).json({
-			TYPE: 'POST',
-			status: 200,
-			message: 'Login successful',
-			token
-		});
+		if (req.user) {
+			const token = signToken(req.user);
+
+			res.status(200).json({
+				TYPE: 'POST',
+				status: 200,
+				message: 'Login successful',
+				token
+			});
+		}
 	},
 	logout: async (req, res, next) => {
 		res.status(200).json({
@@ -60,5 +63,26 @@ module.exports = {
 			status: 200,
 			secret: 'resource'
 		});
+	},
+	verifyEmail: async (req, res, next) => {
+		const { email } = req.value.body;
+
+		const user = await User.findOne({ email });
+		if (user) {
+			const token = signToken(user);
+			res.status(200).json({
+				TYPE: 'GET',
+				status: 200,
+				message: 'Registered successfully',
+				token
+			});
+		} else {
+			res.status(403).json({
+				message: 'Email do not exist'
+			});
+		}
+	},
+	verifyPassword: async (req, res, next) => {
+		const user = await User.findOne();
 	}
 };
