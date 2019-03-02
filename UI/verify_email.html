@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Email verification</title>
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-6 m-auto">
+                <div class="card card-body">
+                    <h1 class="mb-3">Email verification</h1>
+                    <p class="lead">Enter the email address for your account, and we'll send you instructions to reset your password</p>
+                    <form method="POST">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" name="email" id="email" class="form-control" placeholder="Enter email">
+                        </div>
+                        <p id="error" class="text-danger mb-3"></p>
+                        <button class="btn btn-danger btn-block" id="submit">Verify Email</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
